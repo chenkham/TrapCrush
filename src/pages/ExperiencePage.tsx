@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getPageBySlug } from '../lib/mockDb';
 import type { Page, CanvasElement } from '../lib/types';
 import { AuroraBackground } from '../components/shared/AuroraBackground';
-import { ChevronRight, ChevronLeft, Volume2, VolumeX, Share2, Play, HeartCrack } from 'lucide-react';
+import { HeartCrack } from 'lucide-react';
 import { InteractiveCanvasElement } from '../components/shared/InteractiveCanvasElement';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
