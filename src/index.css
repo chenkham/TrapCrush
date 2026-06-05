@@ -1,0 +1,643 @@
+@import "tailwindcss";
+
+/* ============================================================
+   GLOBAL BASE STYLES
+   ============================================================ */
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   THEME: DREAMY ROSE
+   Liquid glass, aurora blobs, soft romance
+   ============================================================ */
+
+.theme-dreamy-rose {
+  --bg: #FFFDF9;
+  --bg-secondary: #fff5f7;
+  --accent: #FF3E6C;
+  --accent-hover: #e63560;
+  --accent-soft: rgba(255, 62, 108, 0.1);
+  --text: #333333;
+  --text-muted: #888888;
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-border: rgba(255, 62, 108, 0.12);
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.theme-dreamy-rose .section-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(255, 62, 108, 0.06);
+}
+
+/* Removed heavy SVG filter overlay to improve scroll performance */
+
+/* ============================================================
+   THEME: MIDNIGHT GLOW
+   Dark elegance, neon accents, starfield feel
+   ============================================================ */
+
+.theme-midnight-glow {
+  --bg: #0f0f1a;
+  --bg-secondary: #1a1a2e;
+  --accent: #FF007F;
+  --accent-hover: #cc0066;
+  --accent-soft: rgba(255, 0, 127, 0.15);
+  --accent-secondary: #00F0FF;
+  --text: #e8e8ef;
+  --text-muted: #8888aa;
+  --card-bg: rgba(26, 26, 46, 0.8);
+  --card-border: rgba(0, 240, 255, 0.15);
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
+
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.theme-midnight-glow .section-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.05), 0 0 60px rgba(255, 0, 127, 0.03);
+}
+
+/* ============================================================
+   THEME: SUNNY CHAOS
+   Tactile brutalism, bold, high-energy
+   ============================================================ */
+
+.theme-sunny-chaos {
+  --bg: #FFDE00;
+  --bg-secondary: #fff3a3;
+  --accent: #00F5D4;
+  --accent-hover: #00d4b6;
+  --accent-soft: rgba(0, 245, 212, 0.2);
+  --accent-secondary: #FF2A2A;
+  --text: #000000;
+  --text-muted: #333333;
+  --card-bg: #FFFFFF;
+  --card-border: #000000;
+  --font-heading: 'Space Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  background-image: radial-gradient(var(--text) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.theme-sunny-chaos .section-card {
+  background: var(--card-bg);
+  border: 4px solid var(--card-border);
+  border-radius: 0;
+  box-shadow: 8px 8px 0px var(--card-border);
+}
+
+/* ============================================================
+   THEME: VINTAGE FILM
+   Warm sepia, handwritten charm, polaroid feel
+   ============================================================ */
+
+.theme-vintage-film {
+  --bg: #F3E5D8;
+  --bg-secondary: #ede0d4;
+  --accent: #B76E79;
+  --accent-hover: #9e5a64;
+  --accent-soft: rgba(183, 110, 121, 0.12);
+  --text: #3C1518;
+  --text-muted: #6b4145;
+  --card-bg: rgba(255, 253, 247, 0.85);
+  --card-border: rgba(183, 110, 121, 0.2);
+  --font-heading: 'Sacramento', cursive;
+  --font-body: 'Lato', sans-serif;
+
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.theme-vintage-film .section-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(60, 21, 24, 0.06);
+}
+
+/* Removed heavy SVG filter overlay to improve scroll performance */
+
+/* ============================================================
+   THEME: ARCADE RETRO
+   Pixel art, neon grids, 8-bit gaming nostalgia
+   ============================================================ */
+
+.theme-arcade-retro {
+  --bg: #0B0C10;
+  --bg-secondary: #1a1c24;
+  --accent: #FF007F;
+  --accent-hover: #cc0066;
+  --accent-soft: rgba(255, 0, 127, 0.15);
+  --accent-secondary: #00F0FF;
+  --text: #C5C6C7;
+  --text-muted: #66FCF1;
+  --card-bg: rgba(11, 12, 16, 0.9);
+  --card-border: #00F0FF;
+  --font-heading: 'Press Start 2P', cursive;
+  --font-body: 'Space Mono', monospace;
+
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.theme-arcade-retro .section-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15), inset 0 0 20px rgba(0, 240, 255, 0.03);
+}
+
+/* Scanlines */
+.theme-arcade-retro::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ============================================================
+   THEME: GARDEN PARTY
+   Botanical warmth, organic shapes, watercolor feel
+   ============================================================ */
+
+.theme-garden-party {
+  --bg: #f0faf4;
+  --bg-secondary: #e8f5ec;
+  --accent: #2d6a4f;
+  --accent-hover: #1b4332;
+  --accent-soft: rgba(45, 106, 79, 0.1);
+  --text: #1b4332;
+  --text-muted: #52796f;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(45, 106, 79, 0.12);
+  --font-heading: 'Kalam', cursive;
+  --font-body: 'Open Sans', sans-serif;
+
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.theme-garden-party .section-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  box-shadow: 0 6px 24px rgba(27, 67, 50, 0.05);
+}
+
+/* ============================================================
+   SHARED COMPONENT STYLES
+   ============================================================ */
+
+/* Animated aurora background */
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: aurora-drift 25s infinite alternate ease-in-out;
+  will-change: transform, opacity;
+}
+
+.aurora-blob-1 { animation-delay: 0s; }
+.aurora-blob-2 { animation-delay: -8s; }
+.aurora-blob-3 { animation-delay: -16s; }
+
+@keyframes aurora-drift {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(15%, 10%) scale(1.15) rotate(120deg); }
+  66% { transform: translate(-10%, 20%) scale(0.9) rotate(240deg); }
+  100% { transform: translate(5%, -10%) scale(1.05) rotate(360deg); }
+}
+
+/* Heartbeat pulse */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.08); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.06); }
+  70% { transform: scale(1); }
+}
+
+.heartbeat {
+  animation: heartbeat 1.6s ease-in-out infinite;
+}
+
+/* Typewriter cursor */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor::after {
+  content: '|';
+  animation: blink-cursor 0.8s step-end infinite;
+  color: var(--accent);
+  font-weight: 200;
+}
+
+/* Glitch effect for arcade */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scroll reveal base */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   GLOBAL UTILITIES
+   ============================================================ */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Removed heavy noise overlay */
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* ============================================================
+   IMMERSIVE SECTION BACKGROUNDS & ANIMATIONS
+   ============================================================ */
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float-heart {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5) rotate(0deg);
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) scale(1.2) rotate(15deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.04;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.08;
+    transform: scale(1.05);
+  }
+}
+
+/* Section gradient backgrounds — each unique and beautiful */
+.section-bg-1 {
+  background: linear-gradient(180deg, #0a0a1a 0%, #0d1b2a 50%, #1b2838 100%);
+  background-size: 100% 100%;
+}
+
+.section-bg-2 {
+  background: linear-gradient(180deg, #1b2838 0%, #0a2a2a 50%, #0d1f1a 100%);
+  background-size: 100% 100%;
+}
+
+.section-bg-3 {
+  background: linear-gradient(180deg, #0d1f1a 0%, #1a1520 50%, #1f1025 100%);
+  background-size: 100% 100%;
+}
+
+.section-bg-4 {
+  background: linear-gradient(180deg, #1f1025 0%, #150d25 50%, #0d0a1f 100%);
+  background-size: 100% 100%;
+}
+
+.section-bg-5 {
+  background: linear-gradient(180deg, #0d0a1f 0%, #1a0f30 50%, #0f0a20 100%);
+  background-size: 100% 100%;
+}
+
+.section-bg-6 {
+  background: linear-gradient(180deg, #0f0a20 0%, #0a1525 50%, #0a1020 100%);
+  background-size: 100% 100%;
+}
+
+/* Floating hearts container */
+.floating-hearts {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-hearts .heart-particle {
+  position: absolute;
+  bottom: -20px;
+  color: #ec4899;
+  opacity: 0;
+  animation: float-heart 6s ease-out infinite;
+}
+
+.floating-hearts .heart-particle:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 7s;
+  font-size: 14px;
+}
+
+.floating-hearts .heart-particle:nth-child(2) {
+  left: 25%;
+  animation-delay: 1.5s;
+  animation-duration: 5.5s;
+  font-size: 10px;
+}
+
+.floating-hearts .heart-particle:nth-child(3) {
+  left: 45%;
+  animation-delay: 3s;
+  animation-duration: 6.5s;
+  font-size: 16px;
+}
+
+.floating-hearts .heart-particle:nth-child(4) {
+  left: 65%;
+  animation-delay: 0.8s;
+  animation-duration: 8s;
+  font-size: 12px;
+}
+
+.floating-hearts .heart-particle:nth-child(5) {
+  left: 80%;
+  animation-delay: 2.5s;
+  animation-duration: 6s;
+  font-size: 18px;
+}
+
+.floating-hearts .heart-particle:nth-child(6) {
+  left: 35%;
+  animation-delay: 4s;
+  animation-duration: 7.5s;
+  font-size: 11px;
+}
+
+.floating-hearts .heart-particle:nth-child(7) {
+  left: 55%;
+  animation-delay: 5s;
+  animation-duration: 5s;
+  font-size: 15px;
+}
+
+.floating-hearts .heart-particle:nth-child(8) {
+  left: 90%;
+  animation-delay: 1s;
+  animation-duration: 6.8s;
+  font-size: 13px;
+}
+
+/* Parallax-style section */
+.parallax-section {
+  position: relative;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Smooth transition between sections */
+.immersive-section {
+  position: relative;
+  transition: background 0.5s ease;
+}
+
+.immersive-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* animation removed to improve scroll performance */
+}
+
+/* Section radial glow accents */
+.section-glow-pink::before {
+  background: radial-gradient(ellipse at 50% 0%, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
+}
+
+.section-glow-purple::before {
+  background: radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+}
+
+.section-glow-cyan::before {
+  background: radial-gradient(ellipse at 30% 50%, rgba(34, 211, 238, 0.06) 0%, transparent 70%);
+}
+
+.section-glow-amber::before {
+  background: radial-gradient(ellipse at 70% 30%, rgba(245, 158, 11, 0.05) 0%, transparent 70%);
+}
+
+/* ============================================================
+   RND RESIZE HANDLES OVERRIDES (TOUCH TARGETS)
+   ============================================================ */
+
+.react-resizable-handle {
+  width: 12px !important;
+  height: 12px !important;
+  border-color: #3b82f6 !important;
+  transition: all 0.2s ease;
+  z-index: 50 !important;
+}
+
+/* Corner handles styling */
+.react-resizable-handle-se {
+  border-right: 3px solid #3b82f6 !important;
+  border-bottom: 3px solid #3b82f6 !important;
+  bottom: 0px !important;
+  right: 0px !important;
+}
+
+.react-resizable-handle-ne {
+  border-right: 3px solid #3b82f6 !important;
+  border-top: 3px solid #3b82f6 !important;
+  top: 0px !important;
+  right: 0px !important;
+}
+
+.react-resizable-handle-sw {
+  border-left: 3px solid #3b82f6 !important;
+  border-bottom: 3px solid #3b82f6 !important;
+  bottom: 0px !important;
+  left: 0px !important;
+}
+
+.react-resizable-handle-nw {
+  border-left: 3px solid #3b82f6 !important;
+  border-top: 3px solid #3b82f6 !important;
+  top: 0px !important;
+  left: 0px !important;
+}
+
+/* Touch device adjustments */
+@media (pointer: coarse) {
+  .react-resizable-handle {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  
+  .react-resizable-handle-se {
+    border-right-width: 4px !important;
+    border-bottom-width: 4px !important;
+  }
+
+  .react-resizable-handle-ne {
+    border-right-width: 4px !important;
+    border-top-width: 4px !important;
+  }
+
+  .react-resizable-handle-sw {
+    border-left-width: 4px !important;
+    border-bottom-width: 4px !important;
+  }
+
+  .react-resizable-handle-nw {
+    border-left-width: 4px !important;
+    border-top-width: 4px !important;
+  }
+}
+
+
+@keyframes cupid-fly {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+.animate-cupid-fly {
+  animation: cupid-fly 3s ease-in-out infinite;
+}
+
+@keyframes wing-flap-front {
+  0%, 100% { transform: rotate(0deg) scaleY(1); }
+  50% { transform: rotate(-30deg) scaleY(0.6); }
+}
+.animate-wing-front {
+  animation: wing-flap-front 0.2s ease-in-out infinite alternate;
+}
+
+@keyframes wing-flap-back {
+  0%, 100% { transform: rotate(0deg) scaleY(1); }
+  50% { transform: rotate(-40deg) scaleY(0.4); }
+}
+.animate-wing-back {
+  animation: wing-flap-back 0.2s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes speed-lines {
+  0% { transform: translateX(20px); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(-40px); opacity: 0; }
+}
+.animate-speed-lines {
+  animation: speed-lines 1.5s linear infinite;
+}
+
