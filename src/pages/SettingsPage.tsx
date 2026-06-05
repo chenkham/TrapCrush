@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
-import { Settings, User, Bell, Palette, Shield, Trash2, LogOut, Save, Mail, Download } from 'lucide-react';
+import { Settings, User, Bell, Shield, Trash2, LogOut, Save, Mail, Download } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { Navigate, useNavigate } from 'react-router-dom';
 

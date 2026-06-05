@@ -9,7 +9,7 @@ import {
   Undo2, Redo2, Copy, CopyPlus, Square, Circle, Triangle,
   Minus, Star, ImagePlus, Eye, EyeOff, Lock, Unlock,
   AlignVerticalSpaceAround, AlignHorizontalSpaceAround, Search, Settings2,
-  Link2, Link2Off, Loader2
+  Link2, Link2Off
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import type { Screen, CanvasElement, ShapeType } from '../../lib/types';
@@ -509,7 +509,7 @@ export const CustomEditor: React.FC<Props> = ({ screens, onChange }) => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="absolute inset-0 pointer-events-none z-0">
-              <AuroraBackground theme={wizardState.theme} />
+              <AuroraBackground theme={wizardState.theme || undefined} />
             </div>
             {activeScreen.background?.type === 'color' && <div className="absolute inset-0 z-0" style={{ backgroundColor: activeScreen.background.value }} />}
             {activeScreen.background?.type === 'image' && <div className="absolute inset-0 bg-cover bg-center opacity-40" style={{ backgroundImage: `url(${activeScreen.background.value})` }} />}

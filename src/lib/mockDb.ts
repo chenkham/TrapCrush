@@ -6,7 +6,7 @@ import { OAuthProvider } from 'appwrite';
 // APPWRITE AUTHENTICATION
 // ============================================================================
 
-export async function getUser(email: string): Promise<User | null> {
+export async function getUser(_email: string): Promise<User | null> {
   try {
     const user = await account.get();
     return { id: user.$id, email: user.email, name: user.name, emailVerification: user.emailVerification };
@@ -55,7 +55,7 @@ export async function getSession(): Promise<User | null> {
   }
 }
 
-export async function updateUser(id: string, name: string): Promise<User> {
+export async function updateUser(_id: string, name: string): Promise<User> {
   const user = await account.updateName(name);
   return { id: user.$id, email: user.email, name: user.name, emailVerification: user.emailVerification };
 }
@@ -63,7 +63,6 @@ export async function updateUser(id: string, name: string): Promise<User> {
 export async function signInWithProvider(provider: string): Promise<void> {
   let oauthProvider;
   if (provider === 'google') oauthProvider = OAuthProvider.Google;
-  if (provider === 'instagram') oauthProvider = OAuthProvider.Instagram;
   
   if (oauthProvider) {
     account.createOAuth2Session(

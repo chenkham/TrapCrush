@@ -43,8 +43,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const loginWithProvider = async (provider: string) => {
-    const u = await signInWithProvider(provider);
-    setUser(u);
+    await signInWithProvider(provider);
   };
 
   const updateUserProfile = async (name: string) => {

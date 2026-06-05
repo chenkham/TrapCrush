@@ -100,6 +100,7 @@ export interface Page {
   screens: Screen[];
   created_at: string;
   updated_at: string;
+  has_been_opened?: boolean;
   target_ratio?: 'laptop' | 'mobile';
 }
 

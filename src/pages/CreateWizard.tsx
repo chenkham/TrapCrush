@@ -319,7 +319,7 @@ export const CreateWizard: React.FC = () => {
               <div className="flex flex-col items-end gap-2">
                 <button
                   onClick={handlePublish}
-                  disabled={isPublishing || (user && !user.emailVerification)}
+                  disabled={isPublishing || (user ? !user.emailVerification : false)}
                   className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full font-bold hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,0,127,0.3)] disabled:opacity-70 disabled:hover:scale-100 disabled:cursor-not-allowed"
                 >
                   {isPublishing ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Publish!'}
