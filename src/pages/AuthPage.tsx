@@ -34,7 +34,7 @@ export const AuthPage: React.FC<Props> = ({ mode }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!agreed) {
+    if (mode === 'signup' && !agreed) {
       setError('You must agree to the Terms of Service and Privacy Policy to continue.');
       return;
     }
@@ -55,7 +55,7 @@ export const AuthPage: React.FC<Props> = ({ mode }) => {
   };
 
   const handleSocialLogin = async (provider: string) => {
-    if (!agreed) {
+    if (mode === 'signup' && !agreed) {
       setError('You must agree to the Terms of Service and Privacy Policy to continue.');
       return;
     }
