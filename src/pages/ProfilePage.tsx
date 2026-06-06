@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
 import { getPagesByUser } from '../lib/mockDb';
 import type { Page } from '../lib/types';
-import { Mail, Calendar, FileText, ExternalLink, Save, Settings, Heart } from 'lucide-react';
+import { Mail, Calendar, FileText, ExternalLink, Save, Settings } from 'lucide-react';
 import { Link, Navigate } from 'react-router-dom';
 
 export const ProfilePage: React.FC = () => {

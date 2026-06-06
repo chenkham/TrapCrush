@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Globe, MessageCircle, Mail } from 'lucide-react';
+import { Heart, Globe, Mail } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
