@@ -88,7 +88,7 @@ export async function verifyEmail(userId: string, secret: string): Promise<void>
 // ============================================================================
 
 export async function createPage(pageData: Omit<Page, 'id' | 'slug' | 'created_at' | 'updated_at' | 'target_ratio'> & { target_ratio?: 'laptop' | 'mobile' }): Promise<Page> {
-  const slug = Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 8);
+  const slug = Math.random().toString(36).substring(2, 7);
   
   // Appwrite expects flat JSON or strings for complex nested arrays
   const documentData = {

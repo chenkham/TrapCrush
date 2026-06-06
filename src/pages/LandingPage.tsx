@@ -518,7 +518,7 @@ export const LandingPage: React.FC = () => {
             {[
               { icon: CreditCard, label: 'No Credit Card' },
               { icon: Shield, label: 'No Hidden Fees' },
-              { icon: InfinityIcon, label: 'Unlimited Pages' },
+              { icon: InfinityIcon, label: '5 Limited Pages' },
             ].map((item, i) => (
               <motion.div
                 key={item.label}

@@ -24,8 +24,7 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex items-center gap-4 text-gray-400">
               <a href="#" className="hover:text-pink-400 transition-colors"><Globe className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-pink-400 transition-colors"><MessageCircle className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-pink-400 transition-colors"><Mail className="w-5 h-5" /></a>
+              <a href="mailto:chenkhamchowlu@gmail.com" className="hover:text-pink-400 transition-colors"><Mail className="w-5 h-5" /></a>
             </div>
           </div>
           
@@ -45,7 +44,7 @@ export const Footer: React.FC = () => {
               <li><Link to="/privacy" className="hover:text-pink-400 transition-colors">Privacy Policy</Link></li>
               <li><Link to="/terms" className="hover:text-pink-400 transition-colors">Terms of Service</Link></li>
               <li><Link to="/cookies" className="hover:text-pink-400 transition-colors">Cookie Policy</Link></li>
-              <li><a href="mailto:support@trapcrush.com" className="hover:text-pink-400 transition-colors">Contact Us</a></li>
+              <li><a href="mailto:chenkhamchowlu@gmail.com" className="hover:text-pink-400 transition-colors">Contact Us</a></li>
             </ul>
           </div>
         </div>

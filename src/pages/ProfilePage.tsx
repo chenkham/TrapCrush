@@ -69,9 +69,12 @@ export const ProfilePage: React.FC = () => {
                 <div className="flex items-center justify-between w-full">
                   <div>
                     <h1 className="text-3xl font-bold text-white tracking-tight">{user.name}</h1>
-                    <div className="flex items-center gap-4 mt-2 text-gray-400 text-sm font-medium">
-                      <div className="flex items-center gap-1.5"><Mail className="w-4 h-4 text-pink-400" /> {user.email}</div>
-                      <div className="flex items-center gap-1.5"><Calendar className="w-4 h-4 text-cyan-400" /> Member since 2024</div>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-2 text-gray-400 text-sm font-medium">
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <Mail className="w-4 h-4 text-pink-400 shrink-0" />
+                        <span className="truncate">{user.email}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 shrink-0"><Calendar className="w-4 h-4 text-cyan-400" /> Member since 2024</div>
                     </div>
                   </div>
                   <button onClick={() => setIsEditing(true)} className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-sm font-medium text-white transition-colors hidden md:block">
@@ -114,15 +117,7 @@ export const ProfilePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-pink-500/20 to-purple-600/20 border border-pink-500/20 rounded-2xl p-6 relative overflow-hidden group cursor-pointer hover:border-pink-500/40 transition-colors">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/20 blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-pink-500/30 transition-colors" />
-              <Heart className="w-8 h-8 text-pink-400 mb-4" />
-              <h3 className="text-white font-semibold mb-2">Upgrade to Pro</h3>
-              <p className="text-sm text-pink-200/80 mb-4">Unlock premium themes, custom domains, and advanced analytics.</p>
-              <button className="w-full py-2 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-xl text-sm transition-colors shadow-lg shadow-pink-500/25">
-                View Plans
-              </button>
-            </div>
+
           </motion.div>
 
           {/* Recent Pages */}

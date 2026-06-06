@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
 import { AuroraBackground } from '../components/shared/AuroraBackground';
 import { CoupleAnimation } from '../components/shared/CoupleAnimation';
-import { Loader2, Mail, User, ArrowRight, Lock } from 'lucide-react';
+import { Loader2, Mail, User, ArrowRight, Lock, Eye, EyeOff } from 'lucide-react';
 
 interface Props {
   mode: 'login' | 'signup';
@@ -30,6 +30,7 @@ export const AuthPage: React.FC<Props> = ({ mode }) => {
   const [loadingProvider, setLoadingProvider] = useState<string | null>(null);
   const [error, setError] = useState('');
   const [agreed, setAgreed] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -196,13 +197,20 @@ export const AuthPage: React.FC<Props> = ({ mode }) => {
               <div className="relative">
                 <Lock className="absolute left-3.5 top-3.5 w-4 h-4 text-gray-500" />
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   required
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl pl-10 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-pink-500/50 focus:ring-1 focus:ring-pink-500/20 transition-all"
+                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl pl-10 pr-12 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-pink-500/50 focus:ring-1 focus:ring-pink-500/20 transition-all"
                   placeholder="Your password"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3.5 top-3.5 text-gray-500 hover:text-gray-300 transition-colors"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
               </div>
 
               {mode === 'signup' && (

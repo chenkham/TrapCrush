@@ -18,9 +18,11 @@ export const SettingsPage: React.FC = () => {
   // Privacy & Data States
   const [requirePasscode, setRequirePasscode] = useState(false);
   const [connections, setConnections] = useState({
-    google: true,
-    instagram: false,
-    whatsapp: true
+    google: true
+  });
+  const [notifications, setNotifications] = useState({
+    newFeatures: true,
+    pageViews: true
   });
 
   if (isLoading) return null;
@@ -236,20 +238,22 @@ export const SettingsPage: React.FC = () => {
                     
                     <div className="space-y-3 max-w-md">
                       {[
-                        { title: 'New Features', desc: 'Updates about new themes and tools' },
-                        { title: 'Page Views', desc: 'When someone views your traps' },
-                        { title: 'Marketing', desc: 'Promotions and offers' }
-                      ].map((item, i) => (
-                        <div key={i} className="bg-black/40 border border-white/5 rounded-xl p-4 flex items-center justify-between cursor-pointer hover:border-white/10 transition-colors">
-                          <div>
-                            <div className="text-white text-sm font-medium mb-1">{item.title}</div>
-                            <div className="text-xs text-gray-400">{item.desc}</div>
+                        { id: 'newFeatures', title: 'New Features', desc: 'Updates about new themes and tools' },
+                        { id: 'pageViews', title: 'Page Views', desc: 'When someone views your traps' }
+                      ].map((item) => {
+                        const isActive = notifications[item.id as keyof typeof notifications];
+                        return (
+                          <div key={item.id} onClick={() => setNotifications(prev => ({ ...prev, [item.id]: !prev[item.id as keyof typeof prev] }))} className="bg-black/40 border border-white/5 rounded-xl p-4 flex items-center justify-between cursor-pointer hover:border-white/10 transition-colors">
+                            <div>
+                              <div className="text-white text-sm font-medium mb-1">{item.title}</div>
+                              <div className="text-xs text-gray-400">{item.desc}</div>
+                            </div>
+                            <div className={`w-10 h-5 rounded-full relative transition-colors ${isActive ? 'bg-pink-500' : 'bg-white/10'}`}>
+                              <div className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-all ${isActive ? 'right-0.5' : 'left-0.5'}`} />
+                            </div>
                           </div>
-                          <div className={`w-10 h-5 rounded-full relative transition-colors ${i === 0 ? 'bg-pink-500' : 'bg-white/10'}`}>
-                            <div className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-all ${i === 0 ? 'right-0.5' : 'left-0.5'}`} />
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </motion.div>
                 )}
@@ -288,7 +292,7 @@ export const SettingsPage: React.FC = () => {
                       {/* Connected Accounts */}
                       <div className="space-y-3 max-w-md">
                         <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Connected Accounts</h3>
-                        {(['google', 'instagram', 'whatsapp'] as const).map((provider) => (
+                        {(['google'] as const).map((provider) => (
                           <div key={provider} className="bg-black/40 border border-white/5 rounded-xl p-4 flex items-center justify-between">
                             <div className="flex items-center gap-3">
                               <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-xs font-semibold capitalize text-white">
