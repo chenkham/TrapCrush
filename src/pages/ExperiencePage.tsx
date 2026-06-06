@@ -42,9 +42,15 @@ export const ExperiencePage: React.FC = () => {
 
       setImagesPreloaded(false);
       let loadedCount = 0;
+      let hasError = false;
+
+      const fallbackTimeout = setTimeout(() => {
+        setImagesPreloaded(true);
+      }, 3000); // 3 second fallback
 
       const checkDone = () => {
         if (loadedCount >= imageUrls.length) {
+          clearTimeout(fallbackTimeout);
           setTimeout(() => setImagesPreloaded(true), 400); // Small delay to guarantee heart pulses at least once
         }
       };
@@ -115,16 +121,16 @@ export const ExperiencePage: React.FC = () => {
 
   const activeScreen = page.screens.find(s => s.id === activeScreenId);
 
-  const isMobileView = viewportSize.width < 768;
-  const canvasWidth = isMobileView ? 360 : 1024;
-  const canvasHeight = isMobileView ? 640 : 576;
+  const isMobileCreated = page.target_ratio === 'mobile' || !page.target_ratio;
+  const canvasWidth = isMobileCreated ? 360 : 1024;
+  const canvasHeight = isMobileCreated ? 640 : 576;
 
   const scaleX = viewportSize.width / canvasWidth;
   const scaleY = viewportSize.height / canvasHeight;
   const scale = Math.min(scaleX, scaleY);
   
   const originalTargetRatio = page.target_ratio || 'mobile';
-  const fontSizeMultiplier = (isMobileView && originalTargetRatio === 'laptop') ? (360 / 1024) : (!isMobileView && originalTargetRatio === 'mobile') ? (1024 / 360) : 1;
+  const fontSizeMultiplier = 1; // Sizes are relative to the original canvas
 
   return (
     <div className={`theme-${page.theme} min-h-screen relative overflow-hidden font-[var(--font-body)] text-[var(--text)] bg-[var(--bg)] flex items-center justify-center`}>
@@ -182,7 +188,7 @@ export const ExperiencePage: React.FC = () => {
                     onAction={handleAction} 
                     canvasWidth={canvasWidth}
                     canvasHeight={canvasHeight}
-                    isMobileView={isMobileView}
+                    isMobileView={isMobileCreated}
                     fontSizeMultiplier={fontSizeMultiplier}
                   />
                 ))}
