@@ -137,22 +137,7 @@ export const AuthPage: React.FC<Props> = ({ mode }) => {
               {mode === 'login' ? 'Log in to manage your pages.' : 'Sign up to start creating.'}
             </p>
 
-            {/* Terms Checkbox */}
-            <div className="flex items-start gap-3 mb-6">
-              <input
-                type="checkbox"
-                id="terms"
-                checked={agreed}
-                onChange={(e) => setAgreed(e.target.checked)}
-                className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-pink-500 focus:ring-pink-500/50 cursor-pointer"
-              />
-              <label htmlFor="terms" className="text-sm text-gray-400 leading-relaxed cursor-pointer">
-                I agree to the{' '}
-                <Link to="/terms" target="_blank" className="text-pink-400 hover:text-pink-300">Terms of Service</Link>
-                {' '}and{' '}
-                <Link to="/privacy" target="_blank" className="text-pink-400 hover:text-pink-300">Privacy Policy</Link>
-              </label>
-            </div>
+
 
             {/* Social Login Buttons */}
             <div className="space-y-3 mb-6">
@@ -220,11 +205,29 @@ export const AuthPage: React.FC<Props> = ({ mode }) => {
                 />
               </div>
 
+              {mode === 'signup' && (
+                <div className="flex items-start gap-3 mt-2 mb-2">
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    required
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-pink-500 focus:ring-pink-500/50 cursor-pointer"
+                  />
+                  <label htmlFor="terms" className="text-sm text-gray-400 leading-relaxed cursor-pointer">
+                    I agree to the{' '}
+                    <Link to="/terms" target="_blank" className="text-pink-400 hover:text-pink-300">Terms</Link>
+                    {' '}and{' '}
+                    <Link to="/privacy" target="_blank" className="text-pink-400 hover:text-pink-300">Privacy Policy</Link>
+                  </label>
+                </div>
+              )}
+
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3.5 px-4 rounded-xl font-bold text-white text-sm flex justify-center items-center gap-2 transition-all hover:shadow-lg hover:shadow-pink-500/20 disabled:opacity-50"
-                style={{ background: 'linear-gradient(135deg, #ec4899, #8b5cf6)' }}
+                className="w-full py-3.5 px-4 rounded-xl font-bold text-white text-sm flex justify-center items-center gap-2 transition-all bg-gradient-to-r from-pink-500 to-purple-500 hover:shadow-lg hover:shadow-pink-500/20 disabled:opacity-50"
               >
                 {isLoading ? (
                   <Loader2 className="w-5 h-5 animate-spin" />

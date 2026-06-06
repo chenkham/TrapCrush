@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 export const VerifyEmailPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { verifyEmail } = useAuth();
+  const { verifyEmail, user } = useAuth();
   
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [errorMessage, setErrorMessage] = useState('');
@@ -20,6 +20,11 @@ export const VerifyEmailPage: React.FC = () => {
     if (!userId || !secret) {
       setStatus('error');
       setErrorMessage('Invalid verification link.');
+      return;
+    }
+
+    if (user?.emailVerification) {
+      setStatus('success');
       return;
     }
 
